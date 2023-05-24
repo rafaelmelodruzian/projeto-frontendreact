@@ -1,13 +1,18 @@
 import React from 'react'
-import "./homeStyle.js"
+import HomeStyle from './homeStyle.js'
 import ProductCard from '../ProductCard/ProductCard.js'
 
 function Home() {
   return (
-    <div>
-         <p>Home</p>
+    <HomeStyle>
+    <div className='header-home'><b>Quantidade de produtos</b>
+    <>Ordenar preço</></div>
+    <main>
     <ProductCard/>
-    </div>
+    <ProductCard/>
+    <ProductCard/>
+    </main>
+    </HomeStyle>
   )
 }
 

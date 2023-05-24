@@ -1,10 +1,16 @@
 import React from 'react'
-import "./itemsStyle.js"
+import ItemsStyle from './itemsStyle'
 
 function Items() {
+    const quantidade = 3
+    const nome = "produto"
+    const valor = "199,00"
 
   return (
-    <p>Itens</p>
+    <ItemsStyle>
+    {quantidade}x {nome} <button>Remover</button><br/>
+    <p>Valor total R$: {valor}</p>
+    </ItemsStyle>
    
   )
 }
