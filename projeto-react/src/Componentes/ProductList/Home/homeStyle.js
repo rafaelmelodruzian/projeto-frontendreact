@@ -17,7 +17,13 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: 4;
   margin: 1vh 0;
+}
+
+.mainzera {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 `
