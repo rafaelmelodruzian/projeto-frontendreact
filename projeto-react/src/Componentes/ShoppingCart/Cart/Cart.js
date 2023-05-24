@@ -1,14 +1,14 @@
 import React from 'react'
-import "./cartSyle.js"
 import Items from '../Items/Items.js'
+import CartStyle from './cartSyle.js'
 
 function Cart() {
 
     return (
-        <div>
-            <p>Cart</p>
+        <CartStyle>
+            <h2>Cart</h2>
             <Items />
-        </div>
+        </CartStyle>
 
     )
 }
