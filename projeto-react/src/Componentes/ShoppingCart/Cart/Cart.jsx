@@ -1,5 +1,5 @@
 import React from 'react'
-import Items from '../Items/Items.js'
+import Items from '../Items/Items.jsx'
 import CartStyle from './cartSyle.js'
 
 function Cart() {
