@@ -9,9 +9,9 @@ function Filters() {
        <h2><b>Filters</b></h2>
        <form>
        <label for="valor-min">Valor mínimo:</label><br/>
-       <input type="text" name="valor-min" id="valor-min" /><br/>
+       <input type="number" name="valor-min" id="valor-min" /><br/>
        <label for="valor-max">Valor máximo:</label><br/>
-       <input type="text" name="valor-max" id="valor-max" /><br/>
+       <input type="number" name="valor-max" id="valor-max" /><br/>
        <label for="nome">Busca por nome:</label><br/>
        <input type="text" name="nome" id="nome" /><br/>
        </form><br/>
