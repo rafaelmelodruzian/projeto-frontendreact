@@ -1,31 +1,20 @@
 import React from 'react'
 import HomeStyle from './homeStyle.js'
 import ProductCard from '../ProductCard/ProductCard.jsx'
-import { useState } from 'react'
 import productList from '../../../Assets/ProductList.jsx'
 
 function Home(props) {
-  const [ordinationFilter, setOrdinationFilter] = useState("")
-
-  const handleInputName = (event) => {
-    setOrdinationFilter(event.target.value)
-    if (ordinationFilter === "Maior preço") {
-      return console.log("Menos")
-    } else {
-      return console.log("Mais")
-    }
-  }
+const { handleOrdena } = props;
 
   return (
     <HomeStyle>
       <div className='header-home'><b>Quantidade de produtos: {productList.length}</b>
         <form>
-          <b>Ordenar por: <select className='ordena-preco' name="select" value={ordinationFilter} onChange={handleInputName}>
+          <b>Ordenar por: <select className='ordena-preco' name="select" value={props.ordinationFilter} onChange={(e) => handleOrdena(e)}>
             <option>Selecione</option>
-            <option>Maior preço</option>
-            <option>Menor preço</option>
+            <option>Maior Valor</option>
+            <option>Menor Valor</option>
           </select></b></form></div>
-
       <main className='mainzera'>
         <ProductCard nomeProduto={props.produtos[0].name} valorProduto={props.produtos[0].value} imgProduto={props.produtos[0].imageUrl} />
         <ProductCard nomeProduto={props.produtos[1].name} valorProduto={props.produtos[1].value} imgProduto={props.produtos[1].imageUrl} />
