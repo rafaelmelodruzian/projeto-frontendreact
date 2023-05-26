@@ -1,17 +1,19 @@
 import React from 'react'
 import ItemsStyle from './itemsStyle'
 
-function Items() {
-    const quantidade = 3
-    const nome = "produto"
-    const valor = "199,00"
+function Items({nome, valor, quantidade, id, removeItem } ) {
 
   return (
+    <>
     <ItemsStyle>
-    {quantidade}x {nome} <button>Remover</button><br/>
-    <p>Valor total R$: {valor}</p>
+      <p>
+     <span>{nome}  </span><br/>
+     <span>Quantidade: {quantidade}</span> <br/>
+     <span>Valor: {valor}</span><br/>
+     <button onClick={() => removeItem(id)}> Remover produto </button>
+     </p>
     </ItemsStyle>
-   
+    </>
   )
 }
 

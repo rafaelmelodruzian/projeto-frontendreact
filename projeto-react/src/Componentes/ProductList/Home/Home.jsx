@@ -4,7 +4,40 @@ import ProductCard from '../ProductCard/ProductCard.jsx'
 import productList from '../../../Assets/ProductList.jsx'
 
 function Home(props) {
-const { handleOrdena } = props;
+  const { handleOrdena } = props;
+
+  const renderProducts = productList.map((item) => {
+    return (<ProductCard product={addToCart} key={item.id} nomeProduto={item.name} valorProduto={item.value} imgProduto={item.imageUrl} id={item} />)
+  });
+
+  function addToCart(id) {
+    const newProduct = props.cart.find((productCB) => id.id === productCB.id);
+    const valorTotal = props.amount + id.value
+    if (newProduct === undefined) {
+      id = { ...id, quantidade: 1 };
+
+
+      props.setAmount(valorTotal)
+      console.log(valorTotal)
+
+      props.setcart([...props.cart, id])
+    } else {
+      props.setAmount(valorTotal)
+      console.log(valorTotal)
+
+      const novoCarrinho = props.cart.map((produto) => {
+        if (produto.id === newProduct.id) {
+          return { ...newProduct, quantidade: produto.quantidade + 1 }
+        } else {
+          return produto
+        }
+      });
+      props.setcart(novoCarrinho)
+    }
+
+  }
+  console.log("Carrinho:",props.cart, "Itens:", props.cart.length)
+
 
   return (
     <HomeStyle>
@@ -16,21 +49,7 @@ const { handleOrdena } = props;
             <option>Menor Valor</option>
           </select></b></form></div>
       <main className='mainzera'>
-        <ProductCard nomeProduto={props.produtos[0].name} valorProduto={props.produtos[0].value} imgProduto={props.produtos[0].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[1].name} valorProduto={props.produtos[1].value} imgProduto={props.produtos[1].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[2].name} valorProduto={props.produtos[2].value} imgProduto={props.produtos[2].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[3].name} valorProduto={props.produtos[3].value} imgProduto={props.produtos[3].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[4].name} valorProduto={props.produtos[4].value} imgProduto={props.produtos[4].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[5].name} valorProduto={props.produtos[5].value} imgProduto={props.produtos[5].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[6].name} valorProduto={props.produtos[6].value} imgProduto={props.produtos[6].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[7].name} valorProduto={props.produtos[7].value} imgProduto={props.produtos[7].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[8].name} valorProduto={props.produtos[8].value} imgProduto={props.produtos[8].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[9].name} valorProduto={props.produtos[9].value} imgProduto={props.produtos[9].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[10].name} valorProduto={props.produtos[10].value} imgProduto={props.produtos[10].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[11].name} valorProduto={props.produtos[11].value} imgProduto={props.produtos[11].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[12].name} valorProduto={props.produtos[12].value} imgProduto={props.produtos[12].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[13].name} valorProduto={props.produtos[13].value} imgProduto={props.produtos[13].imageUrl} />
-        <ProductCard nomeProduto={props.produtos[14].name} valorProduto={props.produtos[14].value} imgProduto={props.produtos[14].imageUrl} />
+        {renderProducts}
       </main>
     </HomeStyle>
   )
