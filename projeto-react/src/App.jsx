@@ -6,13 +6,12 @@ import AppStyle from './appStyle';
 import productList from './Assets/ProductList';
 
 function App() {
-  const [minFilter, setMinFilter] = useState("10");
-  const [maxFilter, setMaxFilter] = useState("100");
+  const [minFilter, setMinFilter] = useState(10);
+  const [maxFilter, setMaxFilter] = useState(100);
   const [searchFilter, setSearchFilter] = useState("");
-  const [cartFilter, setCartFilter] = useState("cartFilter");
-  const [amountFilter, setAmountFilter] = useState("amountFilter");
+  const [cart, setcart] = useState([]);
+  const [amount, setAmount] = useState(0);
   const [ordinationFilter, setOrdinationFilter] = useState("Selecione")
-
 
   const handleMin = (e) => {
     if (e.target.value < 0) {
@@ -26,10 +25,10 @@ function App() {
   };
 
   const handleMax = (e) => {
-    if (e.target.value < 10) {
+    if (e.target.value < 0) {
       setMaxFilter(100)
       console.log(e.target.value)
-      alert("Menor valor possivel é 10")
+      alert("Menor valor possivel é 0")
     } else {
       setMaxFilter(e.target.value)
       console.log(e.target.value)
@@ -52,20 +51,12 @@ function App() {
     }
   }
 
-
-
- 
-
-
-
-
   return (
     <AppStyle>
       <Filters minFilter={minFilter} setMinFilter={setMinFilter} maxFilter={maxFilter} setMaxFilter={setMaxFilter} searchFilter={searchFilter} setSearchFilter={setSearchFilter} handleSearch={handleSearch} handleMin={handleMin} handleMax={handleMax} />
-      <Home cartFilter={cartFilter} setCartFilter={setCartFilter} amountFilter={amountFilter} setAmountFilter={setAmountFilter} produtos={productList} ordinationFilter={ordinationFilter} setOrdinationFilter={setOrdinationFilter} handleOrdena={handleOrdena}  />
-      <Cart cartFilter={cartFilter} setCartFilter={setCartFilter} amountFilter={amountFilter} setAmountFilter={setAmountFilter} />
+      <Home cart={cart} setcart={setcart} amount={amount} setAmount={setAmount} produtos={productList} ordinationFilter={ordinationFilter} setOrdinationFilter={setOrdinationFilter} handleOrdena={handleOrdena}  />
+      <Cart cart={cart} setcart={setcart} amount={amount} setAmount={setAmount} />
     </AppStyle>
   );
 }
 export default App;
-
