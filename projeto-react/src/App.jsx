@@ -3,7 +3,7 @@ import Cart from "./Componentes/ShoppingCart/Cart/Cart";
 import Home from "./Componentes/ProductList/Home/Home";
 import Filters from "./Componentes/Filters/Filters";
 import AppStyle from "./appStyle";
-import productList from "./Assets/productList";
+import ProductList from "./Assets/ProductList";
 import Global from "./globalStyled";
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
   const [cart, setcart] = useState([]);
   const [amount, setAmount] = useState(0);
   const [ordinationFilter, setOrdinationFilter] = useState("Selecione");
-  const [filtredList, setFiltredList] = useState([...productList]);
-  const [last, setLast] = useState([...productList]);
+  const [filtredList, setFiltredList] = useState([...ProductList]);
+  const [last, setLast] = useState([...ProductList]);
 
   useEffect(() => {
     setFiltredList(

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const ProductCardStyle = styled.div`
   display: grid;
   div img {
