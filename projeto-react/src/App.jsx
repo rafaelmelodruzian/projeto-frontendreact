@@ -3,7 +3,7 @@ import Cart from "./Componentes/ShoppingCart/Cart/Cart";
 import Home from "./Componentes/ProductList/Home/Home";
 import Filters from "./Componentes/Filters/Filters";
 import AppStyle from "./appStyle";
-import productList from "./Assets/ProductList";
+import ProductList from "./Assets/ProductList";
 import Global from "./globalStyled";
 
 function App() {
@@ -13,8 +13,8 @@ function App() {
   const [cart, setcart] = useState([]);
   const [amount, setAmount] = useState(0);
   const [ordinationFilter, setOrdinationFilter] = useState("Selecione");
-  const [filtredList, setFiltredList] = useState([...productList]);
-  const [last, setLast] = useState([...productList]);
+  const [filtredList, setFiltredList] = useState([...ProductList]);
+  const [last, setLast] = useState([...ProductList]);
 
   useEffect(() => {
     setFiltredList(
@@ -35,6 +35,26 @@ function App() {
     );
   }, [minFilter, maxFilter, searchFilter]);
 
+  const handleMin = (e) => {
+    if (e.target.value < 0) {
+      setMinFilter(0);
+      alert("Menor valor possivel é 0");
+    } else {
+      setMinFilter(e.target.value);
+    }
+  };
+  const handleMax = (e) => {
+    if (e.target.value < 0) {
+      setMaxFilter(100);
+      alert("Menor valor possivel é 0");
+    } else {
+      setMaxFilter(e.target.value);
+    }
+  };
+  const handleSearch = (e) => {
+    setSearchFilter(e.target.value);
+  };
+
   return (
     <Global>
       <AppStyle>
@@ -45,6 +65,9 @@ function App() {
           setMaxFilter={setMaxFilter}
           searchFilter={searchFilter}
           setSearchFilter={setSearchFilter}
+          handleMax={handleMax}
+          handleMin={handleMin}
+          handleSearch={handleSearch}
         />
         <Home
           cart={cart}

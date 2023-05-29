@@ -21,7 +21,7 @@ function Home({
         product={addToCart}
         key={item.id}
         nomeProduto={item.name}
-        valorProduto={item.value.toFixed(2)}
+        valorProduto={item.value}
         imgProduto={item.imageUrl}
         id={item}
       />
@@ -91,7 +91,7 @@ function Home({
   return (
     <HomeStyle>
       <div className="header-home">
-        <b>quantity de products: {filtredList.length}</b>
+        <b>Quantidade de products: {filtredList.length}</b>
         <form>
           <b>
             Ordenar por:{" "}
