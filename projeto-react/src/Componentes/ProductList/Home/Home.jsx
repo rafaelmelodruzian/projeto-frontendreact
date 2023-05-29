@@ -3,14 +3,25 @@ import HomeStyle from "./homeStyle.js";
 import ProductCard from "../ProductCard/ProductCard.jsx";
 import { useEffect } from "react";
 
-function Home(props) {
-  const renderProducts = props.filtredList.map((item) => {
+function Home({
+  cart,
+  setcart,
+  amount,
+  setAmount,
+  ordinationFilter,
+  setOrdinationFilter,
+  filtredList,
+  setFiltredList,
+  last,
+  setLast,
+}) {
+  const renderProducts = filtredList.map((item) => {
     return (
       <ProductCard
         product={addToCart}
         key={item.id}
         nomeProduto={item.name}
-        valorProduto={item.value}
+        valorProduto={item.value.toFixed(2)}
         imgProduto={item.imageUrl}
         id={item}
       />
@@ -18,52 +29,35 @@ function Home(props) {
   });
 
   function addToCart(id) {
-    const newProduct = props.cart.find((productCB) => id.id === productCB.id);
-    const valorTotal = props.amount + id.value;
+    const newProduct = cart.find((productCB) => id.id === productCB.id);
+    const valorTotal = amount + id.value;
     if (newProduct === undefined) {
-      id = { ...id, quantidade: 1 };
-      props.setAmount(valorTotal);
-      props.setcart([...props.cart, id]);
+      id = { ...id, quantity: 1 };
+      setAmount(valorTotal);
+      setcart([...cart, id]);
     } else {
-      props.setAmount(valorTotal);
-      const novoCarrinho = props.cart.map((produto) => {
-        if (produto.id === newProduct.id) {
-          return { ...newProduct, quantidade: produto.quantidade + 1 };
+      setAmount(valorTotal);
+      const novoCarrinho = cart.map((product) => {
+        if (product.id === newProduct.id) {
+          return { ...newProduct, quantity: product.quantity + 1 };
         } else {
-          return produto;
+          return product;
         }
       });
-      props.setcart(novoCarrinho);
+      setcart(novoCarrinho);
     }
   }
 
   useEffect(() => {
-    props.filtredList.sort((a, b) => {
-      if (props.ordinationFilter === "Decrescente") {
+    filtredList.sort((a, b) => {
+      if (ordinationFilter === "A - Z") {
         if (a.name < b.name) {
           return -1;
         }
         if (a.name > b.name) {
           return 1;
         }
-      } else if (props.ordinationFilter === "Crescente") {
-        if (a.name > b.name) {
-          return -1;
-        }
-        if (a.name < b.name) {
-          return 1;
-        }
-      }
-    });
-    props.final.sort((a, b) => {
-      if (props.ordinationFilter === "Decrescente") {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-      } else if (props.ordinationFilter === "Crescente") {
+      } else if (ordinationFilter === "Z - A") {
         if (a.name > b.name) {
           return -1;
         }
@@ -72,26 +66,44 @@ function Home(props) {
         }
       }
     });
-    props.setFinal([...props.final]);
-    props.setFiltredList([...props.filtredList]);
-  }, [props.ordinationFilter]);
+    last.sort((a, b) => {
+      if (ordinationFilter === "A - Z") {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+      } else if (ordinationFilter === "Z - A") {
+        if (a.name > b.name) {
+          return -1;
+        }
+        if (a.name < b.name) {
+          return 1;
+        }
+      }
+    });
+
+    setLast([...last]);
+    setFiltredList([...filtredList]);
+  }, [ordinationFilter]);
 
   return (
     <HomeStyle>
       <div className="header-home">
-        <b>Quantidade de produtos: {props.filtredList.length}</b>
+        <b>quantity de products: {filtredList.length}</b>
         <form>
           <b>
             Ordenar por:{" "}
             <select
               className="ordena-preco"
               name="select"
-              value={props.ordinationFilter}
-              onChange={(e) => props.setOrdinationFilter(e.target.value)}
+              value={ordinationFilter}
+              onChange={(e) => setOrdinationFilter(e.target.value)}
             >
               <option>Selecione</option>
-              <option>Decrescente</option>
-              <option>Crescente</option>
+              <option>A - Z</option>
+              <option>Z - A</option>
             </select>
           </b>
         </form>
