@@ -1,19 +1,23 @@
-import React from 'react'
-import { ProductCardStyle } from './productCardStyle';
+import React from "react";
+import { ProductCardStyle } from "./productCardStyle";
 
-function ProductCard(props) {
-
-
-    return (
-        <ProductCardStyle>
-            <div className="box-pagina-principal">
-                <img src={props.imgProduto} alt="Imagem ilustrativa" />
-                <h4> <p className='produto'>{props.nomeProduto}</p>
-                    <p className='preco'>Valor R$: {props.valorProduto}</p></h4>
-                <button onClick={()=> props.product(props.id)} >Adicionar ao carrinho</button></div>
-        </ProductCardStyle>
-    )
+function ProductCard({ product, nomeProduto, valorProduto, imgProduto, id }) {
+  return (
+    <ProductCardStyle>
+      <div className="box-pagina-principal">
+        <img src={imgProduto} alt="Imagem ilustrativa" />
+        <span>
+          <p className="produto">
+            <b>{nomeProduto}</b>
+          </p>
+          <p className="preco">
+            <b>R$: {valorProduto.toFixed(2)}</b>
+          </p>
+        </span>
+        <button onClick={() => product(id)}>Adicionar ao carrinho</button>
+      </div>
+    </ProductCardStyle>
+  );
 }
 
 export default ProductCard;
-

@@ -5,15 +5,15 @@ import CartStyle from "./cartSyle.js";
 function Cart(props) {
   function removeItem(id) {
     props.cart.map((produto) => {
-      if (produto.id === id && produto.quantidade >= 1) {
-        produto.quantidade = produto.quantidade - 1;
+      if (produto.id === id && produto.quantity >= 1) {
+        produto.quantity = produto.quantity - 1;
         props.setcart([...props.cart]);
         props.setAmount(props.amount - produto.value);
       }
 
-      if (produto.quantidade === 0) {
+      if (produto.quantity === 0) {
         const novoCarrinho2 = props.cart.filter(
-          (produtos) => produtos.quantidade !== 0
+          (produtos) => produtos.quantity !== 0
         );
         props.setcart(novoCarrinho2);
       }
@@ -21,23 +21,27 @@ function Cart(props) {
   }
 
   return (
-    <CartStyle>
-      <h2>Cart</h2>
-      {props.cart.map((product) => {
-        return (
-          <Items
-            key={product.id}
-            nome={product.name}
-            valor={product.value * product.quantidade.toFixed(2)}
-            quantidade={product.quantidade}
-            imagem={product.imageUrl}
-            id={product.id}
-            removeItem={removeItem}
-          />
-        );
-      })}
-      <p>Valor totaal R$:{props.amount.toFixed(2)} </p>
-    </CartStyle>
+    <div>
+      <CartStyle>
+        <h2>Carrinho</h2>
+        {props.cart.map((product) => {
+          return (
+            <Items
+              key={product.id}
+              nome={product.name}
+              valor={product.value * product.quantity.toFixed(2)}
+              quantity={product.quantity}
+              imagem={product.imageUrl}
+              id={product.id}
+              removeItem={removeItem}
+            />
+          );
+        })}
+        <p>
+          <h3>Valor totaal R$:{props.amount.toFixed(2)}</h3>
+        </p>
+      </CartStyle>
+    </div>
   );
 }
 export default Cart;
