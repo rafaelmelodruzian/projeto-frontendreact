@@ -10,11 +10,11 @@ function ProductCard({ product, nomeProduto, valorProduto, imgProduto, id }) {
           <p className="produto">
             <b>{nomeProduto}</b>
           </p>
-          <p className="preco">
+          <span className="preco">
             <b>R$: {valorProduto.toFixed(2)}</b>
-          </p>
+          </span>
         </span>
-        <button onClick={() => product(id)}>Adicionar ao carrinho</button>
+        <button onClick={() => product(id)}>Comprar</button>
       </div>
     </ProductCardStyle>
   );

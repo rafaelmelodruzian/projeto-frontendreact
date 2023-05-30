@@ -7,7 +7,7 @@ export const HomeStyle = styled.div`
     flex-direction: row;
     justify-content: space-between;
     margin: 0 1vw;
-    color: white;
+    color: yellowgreen;
     height: 6vh;
     margin-top: 3vh;
   }
@@ -24,7 +24,7 @@ export const HomeStyle = styled.div`
   }
   .ordena-preco {
     border-radius: 15px;
-    background-color: lightgreen;
+    background-color: yellowgreen;
     border: 2px solid white;
   }
 `;

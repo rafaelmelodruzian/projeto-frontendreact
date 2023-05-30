@@ -4,8 +4,9 @@ const FiltersStyle = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 1vw;
-  color: white;
+  color: yellowgreen;
   align-items: center;
+  justify-content: flex-start;
   div {
     margin-left: 1vw;
   }
@@ -19,7 +20,22 @@ const FiltersStyle = styled.div`
   .valor-min,
   .nome {
     border-radius: 15px;
-    background-color: lightgreen;
+    background-color: yellowgreen;
+    border: 2px solid white;
+  }
+  .logo {
+    width: 13vw;
+    height: 25vh;
+    margin-top: 4vh;
+    margin-left: 3vw;
+    border-radius: 50px;
+  }
+  .orb {
+    color: yellowgreen;
+    display: flex;
+    justify-content: center;
+    font-family: "Dancing Script", cursive;
+    font-size: 40px;
   }
 `;
 export default FiltersStyle;
