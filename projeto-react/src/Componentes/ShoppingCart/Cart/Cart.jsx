@@ -38,7 +38,7 @@ function Cart(props) {
           );
         })}
 
-        <h3>Valor totaal R$:{props.amount.toFixed(2)}</h3>
+        <h3>Valor total R$:{props.amount.toFixed(2)}</h3>
       </CartStyle>
     </div>
   );

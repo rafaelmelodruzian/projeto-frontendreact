@@ -5,17 +5,17 @@ export const ItemsStyle = styled.div`
 
   button {
     border-radius: 15px;
-    background-color: lightgreen;
+    background-color: yellowgreen;
     border: 2px solid white;
   }
   button:hover {
-    background-color: purple;
+    background-color: lightgreen;
     border: 2px solid white;
     border-radius: 10px;
   }
 
   button:active {
-    background-color: white;
+    background-color: lightblue;
     border: 2px solid orangered;
     border-radius: 10px;
   }

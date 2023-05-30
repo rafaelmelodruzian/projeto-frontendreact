@@ -12,9 +12,16 @@ function Filters({
   return (
     <FiltersStyle>
       <div>
-        <h1>
-          <b>Filtros</b>
-        </h1>
+        <img
+          className="logo"
+          id="lin1"
+          src="https://www.pngall.com/wp-content/uploads/6/Nuclear-Sign-Radiation-PNG.png"
+        />
+        <h2 className="orb">
+          <b>
+            <i>Orbital Store</i>
+          </b>
+        </h2>
         <form>
           <label htmlFor="valor-min">Valor mínimo:</label>
           <br />

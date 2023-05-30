@@ -3,16 +3,16 @@ import styled from "styled-components";
 export const ProductCardStyle = styled.div`
   display: grid;
   div img {
-    height: 32vh;
+    height: 31vh;
     width: 93%;
-    border-radius: 10px;
-    border: solid 2px white;
+    border-radius: 15px;
+    border: solid 2px yellowgreen;
   }
   div button {
     margin-bottom: 2vh;
   }
   .box-pagina-principal {
-    border: 1px solid white;
+    border: 1px solid yellowgreen;
     border-radius: 10px;
     width: 20vw;
     display: flex;
@@ -24,11 +24,16 @@ export const ProductCardStyle = styled.div`
     color: white;
     font-size: 25px;
   }
-  .produto,
-  .preco {
-    color: white;
+  .produto {
+    color: yellowgreen;
     display: flex;
     justify-content: center;
+  }
+  .preco {
+    color: orange;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
   }
   .box-pagina-principal {
     display: flex;
@@ -37,16 +42,17 @@ export const ProductCardStyle = styled.div`
   }
   button {
     border-radius: 15px;
-    background-color: lightgreen;
+    background-color: yellowgreen;
     border: 2px solid white;
+    margin-top: 7px;
   }
   button:hover {
-    background-color: purple;
+    background-color: lightgreen;
     border: 2px solid white;
     border-radius: 10px;
   }
   button:active {
-    background-color: white;
+    background-color: lightblue;
     border: 2px solid orangered;
     border-radius: 10px;
   }
