@@ -15,6 +15,7 @@ function App() {
   const [ordinationFilter, setOrdinationFilter] = useState("Selecione");
   const [filtredList, setFiltredList] = useState([...ProductList]);
   const [last, setLast] = useState([...ProductList]);
+  const [item, setitem] = useState([...ProductList]);
 
   useEffect(() => {
     setFiltredList(
@@ -80,6 +81,8 @@ function App() {
           setFiltredList={setFiltredList}
           last={last}
           setLast={setLast}
+          item={item}
+          setitem={setitem}
         />
         <Cart
           cart={cart}
