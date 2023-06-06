@@ -47,6 +47,30 @@ function Home({
       setcart(novoCarrinho);
     }
   }
+  function saveStorage() {
+    const cartStorage = JSON.stringify(cart);
+    localStorage.setItem("cartLS", cartStorage);
+    const amountStorage = JSON.stringify(amount);
+    localStorage.setItem("amountLS", amountStorage);
+  }
+  function getStorage() {
+    const cartOutStorage = localStorage.getItem("cartLS");
+    const recoveredCart = JSON.parse(cartOutStorage);
+    const amountOutStorage = localStorage.getItem("amountLS");
+    const recoveredAmount = JSON.parse(amountOutStorage);
+    if (recoveredCart.length > 0) {
+      setcart(recoveredCart);
+      setAmount(recoveredAmount);
+    }
+  }
+
+  useEffect(() => {
+    getStorage();
+  }, []);
+
+  useEffect(() => {
+    saveStorage();
+  }, [cart]);
 
   useEffect(() => {
     filtredList.sort((a, b) => {
